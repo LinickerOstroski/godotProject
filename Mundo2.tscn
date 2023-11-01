@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/360_F_312815843_CdVm05kiBenU3YmChP1KRIzcblRgTQFV.jpg" type="Texture" id=1]
+
+[node name="Mundo2" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 522, 307 )
+scale = Vector2( 1.9463, 1.72778 )
+texture = ExtResource( 1 )
