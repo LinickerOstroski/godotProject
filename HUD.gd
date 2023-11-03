@@ -11,4 +11,4 @@ func _ready():
 	pass # Replace with function body.
 
 func atualizaPontuacao(pontos):
-	$pontuacao.text = "Vida: " + str(pontos)	
+	$pontuacao.text = "LIFE POINTS: " + str(pontos)	
