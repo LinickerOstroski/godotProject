@@ -3,18 +3,22 @@ extends KinematicBody2D
 var velocidade_movimento = 100
 var pontos_heroi = 100
 var esta_atacando = false
+var esta_morto = false  # Flag para verificar se o personagem está morto
 onready var hud = get_node("/root/Mundo/HUD")
 onready var portal = get_node("/root/Mundo/Portal")
-onready var alvo = get_node("/root/Mundo/Inimigo4")
 
 # Chamado quando o nó entra na árvore da cena pela primeira vez.
 func _ready():
 	hud.atualiza_pontuacao(pontos_heroi)
 
 func _physics_process(delta):
+	# Não executa nenhuma ação se o personagem está morto
+	if esta_morto:
+		return
+
 	var movimento = Vector2()
-	
-	# Permite o movimento se o personagem não estiver atacando
+
+	# Permite o movimento se o personagem não estiver atacando ou morto
 	if not esta_atacando:
 		# Verifica movimento horizontal
 		if Input.is_action_pressed("ui_right"):
@@ -30,7 +34,7 @@ func _physics_process(delta):
 		elif Input.is_action_pressed("ui_up"):
 			movimento.y = -velocidade_movimento
 		
-		# Verifica qual animação deve ser tocada com base no movimento
+		# Define a animação com base no movimento
 		var animacao = "parado"
 		if movimento.x != 0 and movimento.y == 0:
 			animacao = "andando"
@@ -39,16 +43,16 @@ func _physics_process(delta):
 		elif movimento.y < 0:
 			animacao = "andando_cima"
 		
+		# Move o personagem e toca a animação correspondente
 		movimento = move_and_slide(movimento)
-		
-		# Toca a animação se não estiver atacando
 		if $AnimatedSprite.animation != animacao and not esta_atacando:
 			$AnimatedSprite.play(animacao)
 
-	# Checa por ataque
+	# Verifica se o personagem está atacando
 	if Input.is_action_just_pressed("ui_select") and not esta_atacando:
 		atacar()
 
+	# Verifica a proximidade do portal
 	is_portal_perto()
 
 func atacar():
@@ -63,10 +67,15 @@ func is_portal_perto():
 		get_tree().change_scene("res://Mundo2.tscn")
 
 func toma_dano(dano):
+	if esta_morto:  # Se o personagem já estiver morto, ignora o dano adicional
+		return
+	
 	pontos_heroi -= dano
 	hud.atualiza_pontuacao(pontos_heroi)
 
-	if pontos_heroi <= 0:
+	# Executa a animação de morte e troca de cena quando a vida chega a zero
+	if pontos_heroi <= 0 and not esta_morto:
+		esta_morto = true
 		$AnimatedSprite.play("morrendo")
 		yield($AnimatedSprite, "animation_finished")
 		get_tree().change_scene("res://Mundo.tscn")
