@@ -10,5 +10,5 @@ extends CanvasLayer
 func _ready():
 	pass # Replace with function body.
 
-func atualizaPontuacao(pontos):
+func atualiza_pontuacao(pontos):
 	$pontuacao.text = "LIFE POINTS: " + str(pontos)	
