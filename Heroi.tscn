@@ -79,7 +79,7 @@ __meta__ = {
 position = Vector2( 0, -11 )
 frames = SubResource( 1 )
 animation = "andando_baixo"
-frame = 3
+frame = 4
 speed_scale = 1.7
 playing = true
 __meta__ = {
@@ -95,5 +95,6 @@ __meta__ = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.4, 0.4 )
+zoom = Vector2( 0.35, 0.35 )
 smoothing_enabled = true
+smoothing_speed = 2.0
