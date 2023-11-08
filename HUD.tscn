@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://HUD.gd" type="Script" id=1]
 [ext_resource path="res://Gamer.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/HUD.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=3]
-size = 80
+size = 68
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
@@ -12,7 +13,7 @@ font_data = ExtResource( 2 )
 [sub_resource type="Theme" id=2]
 
 [sub_resource type="DynamicFont" id=4]
-size = 32
+size = 28
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
@@ -20,29 +21,57 @@ font_data = ExtResource( 2 )
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
 
+[node name="Label2" type="Label" parent="."]
+anchor_left = 0.02
+anchor_top = 0.815
+anchor_right = 0.02
+anchor_bottom = 0.815
+margin_left = -0.480001
+margin_top = -489.0
+margin_right = 19.52
+margin_bottom = -475.0
+
+[node name="hud" type="Sprite" parent="Label2"]
+position = Vector2( 199, 529 )
+scale = Vector2( 3.24414, 0.796875 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
 [node name="pontuacao" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.137
-anchor_right = 0.5
-anchor_bottom = 0.137
-margin_left = -478.0
-margin_top = -64.2
-margin_right = -273.0
-margin_bottom = -0.199997
+anchor_left = 0.026
+anchor_top = 0.832
+anchor_right = 0.026
+anchor_bottom = 0.832
+margin_left = 0.375999
+margin_top = -35.2
+margin_right = 215.376
+margin_bottom = 28.8
 custom_colors/font_color = Color( 0.964706, 0.164706, 0.0470588, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "life: 100"
 valign = 1
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Label" type="Label" parent="."]
-margin_left = 33.0
-margin_top = 94.0
-margin_right = 233.0
-margin_bottom = 178.0
+anchor_left = 0.027
+anchor_top = 0.82
+anchor_right = 0.027
+anchor_bottom = 0.82
+margin_left = 0.351999
+margin_top = -3.05176e-05
+margin_right = 200.352
+margin_bottom = 84.0
 theme = SubResource( 2 )
 custom_fonts/font = SubResource( 4 )
-text = " ---CONTROLS--- 
+text = "
 MOVEMENT: Arrows
 ATACK: Space"
 valign = 1
 uppercase = true
+__meta__ = {
+"_edit_group_": true
+}
