@@ -1,7 +1,7 @@
-extends KinematicBody2D
+ extends KinematicBody2D
 
 #Velocidade do inimigo (considere a velocidade que vc colocou no player)
-var speed = 100
+var speed = 80
 
 #xp que o usuário ganha ao matar o inimigo
 #Se quiser usar, crie o método de pontuação no player
@@ -23,7 +23,7 @@ var tataque = 0.2
 #distancia de ataque
 # Não pode ficar muito curta, senão o inimigo não consegue chegar muito perto
 # Não pode ficar muito longa, senão o inimigo ataca de longe e não encurrala o inimigo
-var dataque = 60
+var dataque = 20
 
 #distância de perseguição
 # se eu chegar em uma certa distância o inimigo nos perseguirá
@@ -37,12 +37,17 @@ onready var timer = $Timer
 #facilitador para trabalhar com o player (pegar o que está carregado na cena Main)
 onready var alvo = get_node("/root/Mundo/Heroi")
 
+var esta_morto = false
+
 func _ready():
 	timer.wait_time = tataque
 	timer.start()
 
 #process é chamada 60 vezes por segundo
 func _physics_process(delta):
+	if esta_morto:  # Verifica se o inimigo está morto antes de processar a lógica
+		return
+	
 	var dist = position.distance_to(alvo.position)
 	if dist > dataque and dist < dpers:
 		#fiz uma linha reta do centr do inimigo ao centro do player
@@ -50,7 +55,7 @@ func _physics_process(delta):
 		var vel = (alvo.position - position).normalized()
 		move_and_slide(vel * speed)
 		
-	if(dist<70 && Input.is_action_pressed("ui_select")):
+	if(dist<20 && Input.is_action_pressed("ui_select")):
 		atacar()
 	
 func atacar():	
@@ -58,11 +63,17 @@ func atacar():
 	
 #quando o time disparar. 1 em 1 segundos
 func _on_Timer_timeout():
+	if esta_morto:  # Também verifica aqui se o inimigo está morto
+		return
 	# Se eu estou a menos q a distância de ataque, o inimigo gera dano no player
 	var dist2 = position.distance_to(alvo.position)
 	if dist2 <= dataque:
 		alvo.toma_dano(dano)
 
 func morre():	
+	esta_morto = true
 	#excluo este nó e o inimigo desaparece
+	$AnimatedSprite.play("morrendo")
+	# Espera até que a animação de morrendo tenha terminado
+	yield($AnimatedSprite, "animation_finished")
 	queue_free()

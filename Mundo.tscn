@@ -101,10 +101,14 @@ position = Vector2( 248, -72 )
 position = Vector2( 768, 504 )
 
 [node name="Inimigo6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 848, 88 )
+position = Vector2( 183, 595 )
 
 [node name="Inimigo2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1360, -72 )
+
+[node name="Inimigo7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 335, 806.25 )
+scale = Vector2( 0.0625, 0.0625 )
 
 [node name="Portal" type="Area2D" parent="."]
 position = Vector2( 1518, 742 )

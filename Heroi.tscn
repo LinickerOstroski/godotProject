@@ -37,17 +37,17 @@ animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 1 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "andando",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 26 ), ExtResource( 31 ), ExtResource( 30 ), ExtResource( 29 ) ],
 "loop": true,
 "name": "andando_baixo",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 20 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 22 ), ExtResource( 21 ) ],
 "loop": true,
 "name": "andando_cima",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 5 ) ],
 "loop": true,
@@ -62,7 +62,7 @@ animations = [ {
 "frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "parado",
-"speed": 5.0
+"speed": 7.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -78,8 +78,8 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -11 )
 frames = SubResource( 1 )
-animation = "andando_baixo"
-frame = 4
+animation = "andando_cima"
+frame = 3
 speed_scale = 1.7
 playing = true
 __meta__ = {

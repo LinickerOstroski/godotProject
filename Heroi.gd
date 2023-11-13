@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var velocidade_movimento = 100
+var velocidade_movimento = 110
 var pontos_heroi = 100
 var esta_atacando = false
 var esta_morto = false  # Flag para verificar se o personagem está morto
