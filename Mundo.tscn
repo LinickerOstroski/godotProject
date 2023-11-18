@@ -111,15 +111,15 @@ position = Vector2( 335, 806.25 )
 scale = Vector2( 0.0625, 0.0625 )
 
 [node name="Portal" type="Area2D" parent="."]
-position = Vector2( 1518, 742 )
+position = Vector2( 1518, 739 )
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="Portal"]
-position = Vector2( 0, 1 )
-scale = Vector2( 0.153333, 0.14 )
+position = Vector2( -0.5, 0.5 )
+scale = Vector2( 0.414063, 0.398438 )
 texture = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
