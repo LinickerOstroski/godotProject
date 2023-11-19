@@ -71,7 +71,6 @@ radius = 20.0
 [node name="Mundo" type="Node2D"]
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
-visible = false
 
 [node name="cenario de baixo" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
