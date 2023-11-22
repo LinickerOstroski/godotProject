@@ -15,6 +15,8 @@ func _ready():
 	var Moeda4 = novaMoeda.instance()
 	var Moeda5 = novaMoeda.instance()
 	var Moeda6 = novaMoeda.instance()
+	var Moeda7 = novaMoeda.instance()
+	var Moeda8 = novaMoeda.instance()
 	
 	add_child(Moeda1)
 	add_child(Moeda2)
@@ -22,6 +24,8 @@ func _ready():
 	add_child(Moeda4)
 	add_child(Moeda5)
 	add_child(Moeda6)
+	add_child(Moeda7)
+	add_child(Moeda8)
 	
 	Moeda1.position.x = 366
 	Moeda1.position.y = 751
@@ -40,6 +44,12 @@ func _ready():
 	
 	Moeda6.position.x = 917
 	Moeda6.position.y = 750
+	
+	Moeda7.position.x = 1167
+	Moeda7.position.y = 748
+	
+	Moeda8.position.x = 1519
+	Moeda8.position.y = 327
 	
 	pass # Replace with function body.
 
