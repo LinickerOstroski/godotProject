@@ -12,3 +12,6 @@ func _ready():
 
 func atualiza_pontuacao(pontos):
 	$pontuacao.text = "LIFE POINTS: " + str(pontos)	
+	
+func atualiza_coins(coins):
+	$coins.text = "COINS: " + str(coins)	

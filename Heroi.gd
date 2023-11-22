@@ -2,14 +2,20 @@ extends KinematicBody2D
 
 var velocidade_movimento = 110
 var pontos_heroi = 100
+var coins_coletados = 0
 var esta_atacando = false
 var esta_morto = false  # Flag para verificar se o personagem está morto
 onready var hud = get_node("/root/Mundo/HUD")
 onready var portal = get_node("/root/Mundo/Portal")
 
+
+
+
+
 # Chamado quando o nó entra na árvore da cena pela primeira vez.
 func _ready():
 	hud.atualiza_pontuacao(pontos_heroi)
+
 
 func _physics_process(delta):
 	# Não executa nenhuma ação se o personagem está morto
