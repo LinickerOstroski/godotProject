@@ -5,8 +5,8 @@ var pontos_heroi = 100
 var coins_coletados = 0
 var esta_atacando = false
 var esta_morto = false  # Flag para verificar se o personagem está morto
-onready var hud = get_node("/root/Mundo/HUD")
-onready var portal = get_node("/root/Mundo/Portal")
+var hud = null
+var portal = null
 
 
 
@@ -14,7 +14,16 @@ onready var portal = get_node("/root/Mundo/Portal")
 
 # Chamado quando o nó entra na árvore da cena pela primeira vez.
 func _ready():
-	hud.atualiza_pontuacao(pontos_heroi)
+	hud = get_node_or_null("/root/Mundo/HUD")
+	if hud:
+		hud.atualiza_pontuacao(pontos_heroi)
+	else:
+		hud = get_node_or_null("/root/Mundo2/HUD")
+		hud.atualiza_pontuacao(pontos_heroi)
+
+	portal = get_node_or_null("/root/Mundo/Portal")
+	if !portal:
+		portal = get_node_or_null("/root/Mundo2/Portal")
 
 
 func _physics_process(delta):
@@ -69,8 +78,10 @@ func atacar():
 
 func is_portal_perto():
 	var dist = position.distance_to(portal.position)
-	if dist < 70:
+	print(dist)
+	if dist < 35:
 		get_tree().change_scene("res://Mundo2.tscn")
+
 
 func toma_dano(dano):
 	if esta_morto:  # Se o personagem já estiver morto, ignora o dano adicional
