@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://grama.tres" type="TileSet" id=1]
 [ext_resource path="res://Heroi.gd" type="Script" id=2]
@@ -68,9 +68,6 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 20.0
 
-[sub_resource type="CapsuleShape2D" id=6]
-radius = 20.0
-
 [node name="Mundo2" type="Node2D"]
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
@@ -92,7 +89,7 @@ position = Vector2( 18, -73 )
 script = ExtResource( 2 )
 
 [node name="Portal2" type="Area2D" parent="."]
-position = Vector2( 25, 137 )
+position = Vector2( 12, 642 )
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
@@ -108,18 +105,3 @@ shape = SubResource( 1 )
 
 [node name="Coins2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1377, -80 )
-
-[node name="Portal" type="Area2D" parent="."]
-position = Vector2( 14, 655 )
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Portal"]
-position = Vector2( -0.5, 0.5 )
-scale = Vector2( 0.414063, 0.398438 )
-texture = ExtResource( 5 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
-shape = SubResource( 6 )
