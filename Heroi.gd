@@ -7,7 +7,7 @@ var esta_atacando = false
 var esta_morto = false  # Flag para verificar se o personagem está morto
 var hud = null
 var portal = null
-
+var portal2 = null
 
 
 
@@ -22,8 +22,10 @@ func _ready():
 		hud.atualiza_pontuacao(pontos_heroi)
 
 	portal = get_node_or_null("/root/Mundo/Portal")
-	if !portal:
-		portal = get_node_or_null("/root/Mundo2/Portal")
+	
+	if(!portal):
+		portal = get_node_or_null("/root/Mundo2/Portal2")
+	
 
 
 func _physics_process(delta):
@@ -69,6 +71,7 @@ func _physics_process(delta):
 
 	# Verifica a proximidade do portal
 	is_portal_perto()
+	
 
 func atacar():
 	esta_atacando = true
@@ -79,8 +82,16 @@ func atacar():
 func is_portal_perto():
 	var dist = position.distance_to(portal.position)
 	print(dist)
-	if dist < 35:
-		get_tree().change_scene("res://Mundo2.tscn")
+	var isMundo1 = get_node_or_null("/root/Mundo")
+	var isMundo2 = get_node_or_null("/root/Mundo2")
+	if(isMundo1):
+		if dist < 35:
+			get_tree().change_scene("res://Mundo2.tscn")
+			return
+	if(isMundo2):
+		if dist < 35:
+			get_tree().change_scene("res://Fim.tscn")
+			return
 
 
 func toma_dano(dano):
